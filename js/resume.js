@@ -43,12 +43,12 @@ var reviews = [{"name":"Outschool","link":"https://careerkarma.com/blog/outschoo
 {"name":"Outschool","link":"https://www.reviewed.com/parenting/features/outschool-review-are-these-online-classes-the-easiest-way-to-homeschool","title":"Reviewed.com"},
 {"name":"Kidpass","link":"https://www.wfmz.com/news/pr_newswire/pr_newswire_technology/kidpass-launches-nationally-with-online-classes-100-000-grant-for-families/article_5ccac967-a339-520a-9fa6-480a21c11fbf.html","title":"WFMZ News"}]
 
-function addData(name, description, users, cost, notes, size, missing){
+function addData(name, link, description, users, cost, notes, size, missing){
   var item = $('<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">')
   var content = $('<div class="resume-content">')
   var header = $('<h2 class="mb-0">')
   header.append(name)
-  var subheader = $('<div class="subheading text-primary">')
+  var subheader = $('<div>')
   subheader.append(description)
   var button = $('<a target="_blank" class="card-link btn btn-outline-info">')
   button.attr("href", link)
@@ -56,23 +56,23 @@ function addData(name, description, users, cost, notes, size, missing){
   var users_h = $('<div class="h3 mb-3 text-secondary">')
   users_h.append("What educators use this platform?")
   var users_p = $("<p>")
-  users_p.append(what)
+  users_p.append(users)
   var cost_h = $('<div class="h3 mb-3 text-secondary">')
   cost_h.append("What is the cost?")
   var cost_p = $("<p>")
-  cost_p.append(age)
+  cost_p.append(cost)
   var notes_h = $('<div class="h3 mb-3 text-secondary">')
   notes_h.append("Other Notes")
   var notes_p = $("<p>")
-  notes_p.append(tech)
+  notes_p.append(notes)
   var size_h = $('<div class="h3 mb-3 text-secondary">')
   size_h.append("How big are classes")
   var size_p = $("<p>")
-  size_p.append(time)
+  size_p.append(size)
   var missing_h = $('<div class="h3 mb-3 text-secondary">')
   missing_h.append("What is missing?")
   var missing_p = $("<p>")
-  missing_p.append(educators)
+  missing_p.append(missing)
   var reviews_h = $('<div class="h3 mb-3 text-secondary">')
   reviews_h.append("Reviews")
   var reviews_p = $('<div>')
@@ -80,13 +80,14 @@ function addData(name, description, users, cost, notes, size, missing){
     dict = reviews[i]
     if (dict["name"] == name) {
       var review_btn = $('<a target="_blank" class="card-link btn btn-outline-secondary">')
-      button.attr("href", dict["link"])
-      button.append(dict["website"])
+      review_btn.attr("href", dict["link"])
+      review_btn.append(dict["title"])
+      reviews_p.append(review_btn)
     }
   }
   content.append(header, subheader, "<br>", button, "<br>", "<br>", users_h, users_p, cost_h, cost_p, size_h, size_p, notes_h, notes_p, missing_h, missing_p, reviews_h, reviews_p)
   item.append(content)
-  $("#data-with").append(item)
+  $("#data").append(item)
 }
 
 
@@ -102,7 +103,7 @@ function parseData(){
     var notes = dict["notes"]
     var size = dict["size"]
     var missing = dict["missing"]
-    addData(name, description, users, cost, notes, size, missing)
+    addData(name, link, description, users, cost, notes, size, missing)
   }
 }
 
