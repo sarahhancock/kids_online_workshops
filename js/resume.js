@@ -66,7 +66,7 @@ function addData(name, link, description, users, cost, notes, size, missing){
   var notes_p = $("<p>")
   notes_p.append(notes)
   var size_h = $('<div class="h3 mb-3 text-secondary">')
-  size_h.append("How big are classes")
+  size_h.append("How big are classes?")
   var size_p = $("<p>")
   size_p.append(size)
   var missing_h = $('<div class="h3 mb-3 text-secondary">')
@@ -74,7 +74,7 @@ function addData(name, link, description, users, cost, notes, size, missing){
   var missing_p = $("<p>")
   missing_p.append(missing)
   var reviews_h = $('<div class="h3 mb-3 text-secondary">')
-  reviews_h.append("Reviews")
+  reviews_h.append("Sources and Reviews")
   var reviews_p = $('<div>')
   for (i in reviews){
     dict = reviews[i]
@@ -85,7 +85,7 @@ function addData(name, link, description, users, cost, notes, size, missing){
       reviews_p.append(review_btn)
     }
   }
-  content.append(header, subheader, "<br>", button, "<br>", "<br>", users_h, users_p, cost_h, cost_p, size_h, size_p, notes_h, notes_p, missing_h, missing_p, reviews_h, reviews_p)
+  content.append(header, subheader, "<br>", button, "<br>", "<br>", users_h, users_p, cost_h, cost_p, size_h, size_p, notes_h, notes_p, missing_h, missing_p, reviews_h, reviews_p, "<br><br>")
   item.append(content)
   $("#data").append(item)
 }
